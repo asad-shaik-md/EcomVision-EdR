@@ -146,7 +146,17 @@ const Monthly = () => {
             ]}
           />
         ) : (
-          <>Loading...</>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "75vh",
+              fontSize: 30,
+            }}
+          >
+            Fetching Data...
+          </Box>
         )}
       </Box>
     </Box>

@@ -7,7 +7,20 @@ const BreakdownChart = ({ isDashboard = false }) => {
   const { data, isLoading } = useGetSalesQuery();
   const theme = useTheme();
 
-  if (!data || isLoading) return "Loading...";
+  if (!data || isLoading)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "75vh",
+          fontSize: 30,
+        }}
+      >
+        Fetching Data...
+      </Box>
+    );
 
   const colors = [
     theme.palette.secondary[500],
@@ -130,7 +143,7 @@ const BreakdownChart = ({ isDashboard = false }) => {
         }}
       >
         <Typography variant="h6">
-            {!isDashboard && "Total:"} ${data.yearlySalesTotal}
+          {!isDashboard && "Total:"} ${data.yearlySalesTotal}
         </Typography>
       </Box>
     </Box>
