@@ -7,20 +7,24 @@ const BreakdownChart = ({ isDashboard = false }) => {
   const { data, isLoading } = useGetSalesQuery();
   const theme = useTheme();
 
-  if (!data || isLoading)
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "75vh",
-          fontSize: 30,
-        }}
-      >
-        Fetching Data...
-      </Box>
-    );
+  if (!data || isLoading) {
+    if (!isDashboard) {
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "60vh",
+            fontSize: 30,
+          }}
+        >
+          Fetching Data...
+        </Box>
+      );
+    }
+    return null;
+  }
 
   const colors = [
     theme.palette.secondary[500],

@@ -44,20 +44,24 @@ const OverviewChart = ({ isDashboard = false, view }) => {
     return [[totalSalesLine], [totalUnitsLine]];
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!data || isLoading)
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "60vh",
-          fontSize: 30,
-        }}
-      >
-        Fetching Data...
-      </Box>
-    );
+  if (!data || isLoading) {
+    if (!isDashboard) {
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "60vh",
+            fontSize: 30,
+          }}
+        >
+          Fetching Data...
+        </Box>
+      );
+    }
+    return null;
+  }
   return (
     <ResponsiveLine
       data={view === "sales" ? totalSalesLine : totalUnitsLine}
