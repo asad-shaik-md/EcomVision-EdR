@@ -24,13 +24,13 @@ export const getDashboardStats = async (req, res) => {
 
     const overallStat = await OverallStat.find({ year: currentYear });
 
-    const [
+    const {
       totalCustomers,
       yearlyTotalSoldUnits,
       yearlySalesTotal,
       monthlyData,
       salesByCategory,
-    ] = overallStat[0];
+   } = overallStat[0];
 
     const thisMonthStats = overallStat[0].monthlyData.find(({ month }) => {
       return month === currentMonth;
@@ -41,15 +41,15 @@ export const getDashboardStats = async (req, res) => {
     });
 
     res.status(200).json({
-        totalCustomers,
-        yearlyTotalSoldUnits,
-        yearlySalesTotal,
-        monthlyData,
-        salesByCategory,
-        thisMonthStats,
-        todayStats,
-        transactions
-    })
+      totalCustomers,
+      yearlyTotalSoldUnits,
+      yearlySalesTotal,
+      monthlyData,
+      salesByCategory,
+      thisMonthStats,
+      todayStats,
+      transactions,
+    });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
