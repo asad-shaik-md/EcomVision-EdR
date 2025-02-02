@@ -6,9 +6,7 @@ import {
   IconButton,
   List,
   ListItem,
-  listItemButton,
   ListItemIcon,
-  ListIconText,
   Typography,
   useTheme,
   ListItemButton,
@@ -138,7 +136,7 @@ const Sidebar = ({
                 )}
               </FlexBetween>
             </Box>
-            <List sx={{overflow: scroll}}>
+            <List>
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
@@ -189,7 +187,7 @@ const Sidebar = ({
             </List>
           </Box>
 
-          <Box position="absolute" bottom="2rem">
+          <Box position="" bottom="2rem">
             <Divider />
             <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box
