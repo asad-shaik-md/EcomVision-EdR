@@ -138,7 +138,7 @@ const Sidebar = ({
                 )}
               </FlexBetween>
             </Box>
-            <List>
+            <List sx={{overflow: scroll}}>
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
